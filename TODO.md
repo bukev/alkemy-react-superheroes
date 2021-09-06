@@ -14,6 +14,7 @@
 
 
 ► Search: (AGREGAR ESTILOS)
+
     Input para buscar ✔ 
     Mostrar listado de heroes: ✔ 
         - Imagen
@@ -26,6 +27,7 @@
 
 
 ► Home / Team (AGREGAR ESTILOS)
+
     Almacenar stats del equipo de manera global o en AppRouter para mostrar en el Home ❌
     Un equipo en una variable o estado global.
 
