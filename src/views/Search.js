@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { HeroCard } from '../components/HeroCard'
 
-export const Search = () => {
+export const Search = (props) => {
 
     const history = useHistory()
     const token = localStorage.getItem('accessToken')
@@ -36,18 +36,26 @@ export const Search = () => {
                 <input onChange={handleInputChange} type="text" placeholder="Type a Superhero Name..." required/>
                 <input type="submit" value="Search" />
             </form>
+
+            <div className="hero-card-container">
+                {heroesList.map(hero => {
+                    return (
+                        <HeroCard
+                            key={hero.id}
+                            // name={hero.name}
+                            // image={hero.image.url}
+                            // stats={hero.powerstats}
+                            // alignment={hero.biography.alignment}
+                            hero={hero}
+                            isMember={false}
+                            addMember={props.addMember}
+                            removeMember={props.removeMember}
+                        />
+                        
+                    )
+                })}
+            </div>
             
-            {heroesList.map(hero => {
-                return (
-                    <HeroCard
-                        key={hero.id}
-                        name={hero.name}
-                        image={hero.image.url}
-                        stats={hero.powerstats}
-                    />
-                    
-                )
-            })}
 
         </div>
     )

@@ -3,32 +3,42 @@ import '../styles/herocard.css'
 
 export const HeroCard = (props) => {
 
-    const [isMember, setIsMember] = useState(false)
+    const [isMember, setIsMember] = useState(props.isMember)
     let statRows = []
+    const {image: {url}, name, biography: {alignment}, powerstats} = props.hero
 
-    for (const stat in props.stats) {
+    for (const stat in powerstats) {
         statRows.push(
             <div className="stat-group">
-                <h3 className="stat-name">
-                    {stat}
+                <h3 className="stat">
+                    {powerstats[stat]}
                 </h3>
-                <p className="stat">
-                    {props.stats[stat]}
+                <p className="stat-name">
+                    {stat}
                 </p>
             </div>
         )
     }
 
+    const handleClick = () => {
+        if (isMember === false) {
+            props.addMember(props.hero)
+            // setIsMember(true)
+        } else {
+            props.removeMember(props.hero)
+        }
+    }
 
     return (
         <div className="hero-card">
             <hr />
-            <img className="hero-card-image" src={props.image} alt={props.name} />
-            <h3 className="hero-name">{props.name}</h3>
+            <img className="hero-card-image" src={url} alt={name} />
+            <h3 className="hero-name">{name}</h3>
+            <p>alignment: {alignment}</p>
             
             {statRows}
 
-            <button onClick={() => setIsMember(!isMember)} >{isMember ? 'Remove from the team' : 'Add to the team'}</button>
+            <button onClick={handleClick}>{isMember ? 'Remove from the team' : 'Add to the team'}</button>
         </div>
     )
 }

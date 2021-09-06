@@ -1,0 +1,30 @@
+.hero-card-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 24px;
+    column-gap: 24px;
+}
+
+.hero-card {
+    /* height: 500px; */
+    align-self: center;
+    justify-self: center;
+    padding: 12px;
+    width: 300px;
+    background-color: bisque;
+}
+
+.hero-card-image {
+    width: 100%;
+}
+
+.hero-name {
+    font-size: 24px;
+}
+
+.stat-group {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}

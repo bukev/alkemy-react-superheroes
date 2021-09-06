@@ -36,4 +36,8 @@
             - Total de powerstats
             - Peso y altura promedio del equipo
 
+    ////// DO this 👇👇👇👇
     Podría sólo guardar un array con los id de heroes y fetchearlos en el home? / y luego usar ese mismo array para mostrar en el search aquellos héroes que ya estén en el equipo. 
+    Guardarlos en el estado del router?
+
+    Hice la funcion en Approuter, ahora ejecutarla desde HeroCard, dinamicamente (!!!)

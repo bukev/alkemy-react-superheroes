@@ -41,6 +41,10 @@ export const Auth = (props) => {
             [event.target.name]: event.target.value
         })
     }
+
+    if (token) {
+        history.push('/')
+    }
     
     return (
         <div className="login">
