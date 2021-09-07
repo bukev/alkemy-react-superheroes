@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import { useHistory } from 'react-router-dom';
+import axios from 'axios'
+import '../styles/auth.css'
 
 export const Auth = (props) => {
 
@@ -48,17 +49,20 @@ export const Auth = (props) => {
     
     return (
         <div className="login">
+            <h1>Login</h1>
             <form onSubmit={handleFormSubmit}>
-            <label>
-                Email
-                <input onChange={handleInputChange} name="email" type="text" required/>
-            </label>
-            <label>
-                Password
-                <input onChange={handleInputChange} name="password" type="password" required/>
-            </label>
+                <label>
+                    Email
+                    <input onChange={handleInputChange} name="email" type="text" required/>
+                </label>
+                <label>
+                    Password
+                    <input onChange={handleInputChange} name="password" type="password" required/>
+                </label>
 
-            <input type="submit" value="Login" className="submit-button" />
+                <button type="submit" value="Login" className="submit-button" >
+                    Login
+                </button>
             </form>
 
         </div>

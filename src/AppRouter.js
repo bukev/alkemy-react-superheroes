@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import config from './config'
 import { Auth } from './views/Auth';
 import { Home } from './views/Home';
 import { Search } from './views/Search';
 import { NotFound } from './views/NotFound';
 import { Navbar } from './components/Navbar';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AppRouter() {
 
@@ -16,6 +18,8 @@ function AppRouter() {
         good: [],
         bad: []
     })
+
+    
 
     const addMember = (hero) => {
 
@@ -33,10 +37,10 @@ function AppRouter() {
                     ...teamList,
                     good: [...teamList.good, hero]
                 })
-                alert('added good hero')
+                toast.success(hero.name + ' added to the team!')
 
             } else {
-                alert("Good orientation limit on the team is 3.")
+                toast.warning("Good orientation limit on the team is 3.")
                 
             }
 
@@ -48,16 +52,17 @@ function AppRouter() {
                     ...teamList,
                     bad: [...teamList.bad, hero]
                 })
-                alert('added bad hero')
+                toast.success(hero.name + ' added to the team!')
 
             } else {
-                alert("Bad orientation limit on the team is 3.")
+                toast.warning("Bad orientation limit on the team is 3.")
             }
 
         } else {
             // if hero is neither good or bad, it won't get added.
-            alert('Team must have three good and three bad heroes')
+            toast.error('Team must have three good and three bad heroes')
         }
+
     }
 
     const removeMember = (hero) => {
@@ -70,18 +75,29 @@ function AppRouter() {
                 bad,
                 good: good.filter(h => h.id !== hero.id)
             })
-            alert('removed good hero')
+            toast.info(hero.name + ' removed from the team')
         } else {
             setTeamList({
                 good,
                 bad: bad.filter(h => h.id !== hero.id)
             })
-            alert('removed bad hero')
+            toast.info(hero.name + ' removed from the team')
         }
     }
 
     return (
         <Router>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <Navbar />
             <Switch>
                 <Route exact path="/auth">

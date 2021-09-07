@@ -31,14 +31,15 @@ export const HeroCard = (props) => {
 
     return (
         <div className="hero-card">
-            <hr />
             <img className="hero-card-image" src={url} alt={name} />
-            <h3 className="hero-name">{name}</h3>
-            <p>{alignment}</p>
-            
-            {statRows}
 
-            <button onClick={handleClick}>{isMember ? 'Remove from the team' : 'Add to the team'}</button>
+            <div className="hero-card-data">
+                <h3 className="hero-name">{name}</h3>
+                <p>{alignment}</p>
+                {statRows}
+            </div>
+
+            <div className="hero-button" onClick={handleClick} style={{backgroundColor: isMember ? '#FFA366' : '#5BDE8D'}} >{isMember ? 'Remove from the team' : 'Add to the team'}</div>
         </div>
     )
 }
