@@ -10,7 +10,11 @@ export const Search = (props) => {
     const APIURL = sessionStorage.getItem('APIURL')
     const [heroesList, setHeroesList] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    let teamListIds = []
 
+    if (props.teamList) {
+        teamListIds = [...props.teamList.good, ...props.teamList.bad].map(h => h.id)
+    }
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value)
@@ -42,12 +46,8 @@ export const Search = (props) => {
                     return (
                         <HeroCard
                             key={hero.id}
-                            // name={hero.name}
-                            // image={hero.image.url}
-                            // stats={hero.powerstats}
-                            // alignment={hero.biography.alignment}
                             hero={hero}
-                            isMember={false}
+                            isMember={teamListIds.includes(hero.id)}
                             addMember={props.addMember}
                             removeMember={props.removeMember}
                         />

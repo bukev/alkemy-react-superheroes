@@ -65,20 +65,16 @@ function AppRouter() {
         const { biography: { alignment } } = hero
         const { good, bad } = teamList
 
-        console.log(good.indexOf(hero))
-        console.log(bad.indexOf(hero))
-
         if (alignment === 'good') {
             setTeamList({
-                ...teamList,
-                good: good.splice(good.indexOf(hero))
+                bad,
+                good: good.filter(h => h.id !== hero.id)
             })
             alert('removed good hero')
-            console.log(teamList)
         } else {
             setTeamList({
-                ...teamList,
-                bad: bad.splice(bad.indexOf(hero))
+                good,
+                bad: bad.filter(h => h.id !== hero.id)
             })
             alert('removed bad hero')
         }
@@ -98,7 +94,7 @@ function AppRouter() {
 
                 </Route>
                 <Route exact path="/">
-                    <Home teamList={teamList} removeMember={removeMember}/>
+                    <Home key="Home" teamList={teamList} removeMember={removeMember}/>
                 </Route>
                 <Route path='/404' component={NotFound} />
                 <Redirect from='*' to='/404' />

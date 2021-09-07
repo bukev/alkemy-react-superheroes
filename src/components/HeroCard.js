@@ -23,10 +23,10 @@ export const HeroCard = (props) => {
     const handleClick = () => {
         if (isMember === false) {
             props.addMember(props.hero)
-            // setIsMember(true)
         } else {
             props.removeMember(props.hero)
         }
+        setIsMember(!isMember)
     }
 
     return (
@@ -34,7 +34,7 @@ export const HeroCard = (props) => {
             <hr />
             <img className="hero-card-image" src={url} alt={name} />
             <h3 className="hero-name">{name}</h3>
-            <p>alignment: {alignment}</p>
+            <p>{alignment}</p>
             
             {statRows}
 
